@@ -12,12 +12,12 @@ async fn main() -> std::io::Result<()> {
     println!("Hello, world!");
 
     let url = "postgres://postgres:secret@localhost:5432/postgres";
-    let pool = sqlx::postgres::PgPool::connect(url).await.unwrap();
+    //let pool = sqlx::postgres::PgPool::connect(url).await.unwrap();
 
 
     HttpServer::new(move || {
         App::new()
-            .app_data(actix_web::web::Data::new(pool.clone()))
+            //.app_data(actix_web::web::Data::new(pool.clone()))
             .configure(routes::auth::config)
             .configure(routes::expenses::config)
 
